@@ -9769,3 +9769,142 @@
     list-style-type: none;
   }
   
+
+  .popup-button-container {
+    position: fixed; /* Keeps the button fixed on the screen */
+    bottom: 20px; /* Position from the bottom */
+    right: 20px; /* Position from the right */
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  .popup-button {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px; /* Rounded button */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .popup-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .popup {
+    position: fixed; /* Position fixed for the popup */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* On top of other content */
+  }
+  
+  .popup-content {
+    background-color: #fff; /* White background for the popup */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    width: 400px; /* Fixed width for the popup */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    position: relative; /* For absolute positioning of the close button */
+  }
+  
+  .close {
+    position: absolute; /* Position the close button */
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .chat-messages {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.message {
+    margin-bottom: 10px;
+    display: flex;
+    width: 100%;
+}
+
+/* User messages (align left) */
+.user-message {
+    justify-content: flex-start;
+}
+
+.user-message .message-text {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-start;
+    border-radius: 10px 10px 10px 0;
+    padding: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+/* Bot messages (align right) */
+.bot-message {
+    justify-content: flex-end;
+}
+
+.bot-message .message-text {
+    background-color: #f1f1f1;
+    color: black;
+    align-self: flex-end;
+    border-radius: 10px 10px 0 10px;
+    padding: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+/* Shared styling for all messages */
+.message-text {
+    display: inline-block;
+    word-wrap: break-word;
+}
+
+.message-image {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+
+.input-container {
+    display: flex; /* Align input and button horizontally */
+    justify-content: space-between; /* Space between elements */
+}
+
+.message-input {
+    flex: 1; /* Take remaining space */
+    padding: 10px;
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 20px; /* Rounded input */
+    margin-right: 10px; /* Space between input and button */
+}
+
+
+  
+  .send-button {
+    background-color: #28a745; /* Green button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px; /* Rounded button */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .send-button:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  

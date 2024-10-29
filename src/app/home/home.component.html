@@ -87,8 +87,8 @@
                             </div>
                         </div>
                         <div class="nav-item">
-                            <button class="nav-link" (click)="login()" *ngIf="!isLoggedIn">Login</button>
-                            <button class="nav-link" (click)="logout()" *ngIf="isLoggedIn">Logout</button>
+                            <a class="nav-link" (click)="login()" *ngIf="!isLoggedIn">Login </a>
+                            <a class="nav-link" (click)="logout()" *ngIf="isLoggedIn">Logout </a>
                           </div>
                           
                     </div>
@@ -97,6 +97,42 @@
         </div>
     </div>
     <!-- Navbar End -->
+
+
+    <div class="popup-button-container">
+        <button class="popup-button" (click)="togglePopup()">💬 Open Discussion</button>
+    </div>
+    <div class="popup" *ngIf="isPopupOpen">
+        <div class="popup-content">
+            <span class="close" (click)="togglePopup()">&times;</span>
+            <h2>Discussion</h2>
+    
+            <div class="chat-messages">
+                <div *ngFor="let message of messages" 
+                     class="message" 
+                     [ngClass]="{'user-message': message.recipient_id === 'user', 'bot-message': message.recipient_id === 'bot'}">
+                  <div *ngIf="message.text" class="message-text">{{ message.text }}</div>
+                  <img *ngIf="message.image" [src]="message.image" alt="Image" class="message-image" />
+                </div>
+              </div>
+              
+    
+            <div class="input-container">
+                <input
+                    type="text"
+                    [(ngModel)]="userMessage"
+                    placeholder="Type your message here..."
+                    class="message-input"
+                />
+                <button (click)="sendMessage()" class="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+    
+      
+      
+
+
 
 
     <!-- Carousel Start -->
