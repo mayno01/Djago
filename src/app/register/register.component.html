@@ -1,0 +1,26 @@
+
+
+
+<div class="login-container">
+    <div class="login-left">
+      <h2>Register! 👋</h2>
+      <p>How do I get started?</p>
+      <form (ngSubmit)="onRegister()">
+        <label for="username">username</label>
+        <input type="username" [(ngModel)]="username" id="username" name="username" placeholder="username">
+        <label for="email">Email:</label>
+        <input type="email" [(ngModel)]="email" name="email" required />      
+        <label for="password">Password</label>
+        <input type="password" [(ngModel)]="password" id="password" name="password" placeholder="******">
+              <label for="confirm_password">Confirm Password</label>
+        <input type = password [(ngModel)]="confirm_password" id="confirm_password" name="confirm_password" placeholder="******">
+        <div *ngIf="passwordMismatch" class="error-message">
+            Passwords do not match.
+        </div>
+        <button type="submit" class="btn btn-signin">Sign In</button>
+ 
+      </form>
+      <p>you have an account ? <a href="#">Sign in Now</a></p>
+    </div>
+
+  </div>
