@@ -1,0 +1,11 @@
+<form method="POST">
+    {% csrf_token %}
+    <label for="text">Text to Translate:</label>
+    <textarea name="text" required></textarea>
+    <button type="submit">Translate</button>
+</form>
+
+{% if translated_text %}
+    <h2>Translated Text:</h2>
+    <p>{{ translated_text }}</p>
+{% endif %}

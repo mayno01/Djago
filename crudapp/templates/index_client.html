@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Events</title>
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .container {
+        width: 80%; /* Adjusted width for better card spacing */
+        margin-top: 20px; /* Added top margin for spacing from the navbar or header */
+    }
+    .card {
+        margin-bottom: 20px; /* Adds bottom margin for spacing between cards */
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+</style>
+
+<div class="container">
+    <h1>Events</h1>
+
+    <div class="row">
+        {% for event in events %}
+        <div class="col-sm-12 col-md-6 col-lg-4"> 
+            <div class="card">
+                {% if event.image %} 
+                <img src="{{ event.image.url }}" class="card-img-top" alt="Image of {{ event.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.title }}</h5>
+                    <p>Date: {{ event.date|date:"F d, Y" }}</p>
+                    <p>Fee: ${{ event.fee }}</p>
+                    {% comment %} <a href="{% url 'show_event' event.id %}" class="btn btn-primary">Show Details</a> {% endcomment %}
+                    <div class="col-6 col-md-3"><a class='btn btn-primary' href="{% url 'show' event.id %}">Book</a></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
