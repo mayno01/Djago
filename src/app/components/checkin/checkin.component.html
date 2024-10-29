@@ -1,0 +1,21 @@
+<div>
+    <h2>Check-In</h2>
+    <input type="text" [(ngModel)]="prompt" placeholder="Enter prompt" />
+    <button (click)="onCheckIn()">Check In</button>
+  
+    <div *ngIf="responseData">
+      <h3>Response:</h3>
+      <pre>{{ responseData | json }}</pre>
+  
+      <h3>Hotel Images:</h3>
+      <div *ngIf="responseData.images && responseData.images.length > 0">
+        <div *ngFor="let image of responseData.images">
+          <img [src]="image" alt="Hotel Image" class="hotel-image" />
+        </div>
+      </div>
+      <div *ngIf="!responseData.images || responseData.images.length === 0">
+        <p>No images available.</p>
+      </div>
+    </div>
+  </div>
+  
