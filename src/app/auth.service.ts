@@ -41,4 +41,23 @@ export class AuthService {
   register(user: { username: string; email: string; password: string }): Observable<any> {
     return this.http.post(`${this.baseUrl}register/`, user);
   }
+
+
+
+
+
+  sendResetLink(data: { email: string }): Observable<any> {
+    return this.http.post(`${this.baseUrl}password_reset/`, data);
+  }
+  
+  resetPassword(uidb64: string, token: string, data: { new_password: string }): Observable<any> {
+    return this.http.post(
+      `${this.baseUrl}reset_password/${uidb64}/${token}/`,
+      data
+    );
+  }
+  
+
+
+
 }
