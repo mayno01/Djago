@@ -12,12 +12,14 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
-
+CLARIFAI_API_KEY = 'f70a8ba8669544fbaf7bcf80cdd93073'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -43,7 +45,12 @@ INSTALLED_APPS = [
     'accounts',
     'chatbot',
     'corsheaders',
- 
+    'hotel',
+    'checkin',
+    'crudapp',
+    'face_auth',
+    'destinations',
+    'circuit',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +147,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR/'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -151,3 +159,14 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:4200",
 ]
 CORS_ALLOW_CREDENTIALS = True
+
+DEFAULT_FROM_EMAIL = 'amine.hamed@esprit.tn'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.office365.com'  # Microsoft SMTP server
+EMAIL_PORT = 587  # Use TLS
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'amine.hamed@esprit.tn'
+EMAIL_HOST_PASSWORD = 'Hanazu699@'  # Ensure this is correct
+

@@ -1,0 +1,23 @@
+<!-- hotel_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ hotel.name }} Details</title>
+</head>
+<body>
+    <h1>{{ hotel.name }}</h1>
+    <p><strong>Location:</strong> {{ hotel.location }}</p>
+    <p><strong>Rating:</strong> {{ hotel.rating }}</p>
+    <p><strong>Price:</strong> {{ hotel.price }}</p>
+    <p><strong>Description:</strong> {{ hotel.description }}</p>
+    <a href="{% url 'hotel_update' hotel.pk %}">Edit</a>
+    <form action="{% url 'hotel_delete' hotel.pk %}" method="POST" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <br>
+    <a href="{% url 'hotel_list' %}">Back to Hotel List</a>
+</body>
+</html>

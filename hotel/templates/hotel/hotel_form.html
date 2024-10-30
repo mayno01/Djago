@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if hotel %}Update{% else %}Create{% endif %} Hotel</title>
+</head>
+<body>
+    <h1>{% if hotel %}Update{% else %}Create{% endif %} Hotel</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <p>
+            <label for="id_name">Name:</label>
+            {{ form.name }}
+            {% for error in form.name.errors %}
+                <ul class="errorlist">
+                    <li>{{ error }}</li>
+                </ul>
+            {% endfor %}
+        </p>
+
+        <p>
+            <label for="id_location">Location:</label>
+            {{ form.location }}
+            {% for error in form.location.errors %}
+                <ul class="errorlist">
+                    <li>{{ error }}</li>
+                </ul>
+            {% endfor %}
+        </p>
+
+        <p>
+            <label for="id_rating">Rating:</label>
+            {{ form.rating }}
+            {% for error in form.rating.errors %}
+                <ul class="errorlist">
+                    <li>{{ error }}</li>
+                </ul>
+            {% endfor %}
+        </p>
+
+        <p>
+            <label for="id_price">Price:</label>
+            {{ form.price }}
+            {% for error in form.price.errors %}
+                <ul class="errorlist">
+                    <li>{{ error }}</li>
+                </ul>
+            {% endfor %}
+        </p>
+
+        <p>
+            <label for="id_description">Description:</label>
+            {{ form.description }}
+            {% for error in form.description.errors %}
+                <ul class="errorlist">
+                    <li>{{ error }}</li>
+                </ul>
+            {% endfor %}
+        </p>
+
+        <button type="submit">{% if hotel %}Update{% else %}Save{% endif %} Hotel</button>
+    </form>
+    <a href="{% url 'hotel_list' %}">Back to Hotel List</a>
+</body>
+</html>

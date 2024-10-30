@@ -1,0 +1,24 @@
+<tbody>
+    {% if hotels %}
+        {% for hotel in hotels %}
+            <tr>
+                <td>{{ hotel.name }}</td>
+                <td>{{ hotel.location }}</td>
+                <td>{{ hotel.rating }}</td>
+                <td>{{ hotel.price }}</td>
+                <td>
+                    <a href="{% url 'hotel_detail' hotel.pk %}">View</a>
+                    <a href="{% url 'hotel_update' hotel.pk %}">Edit</a>
+                    <form action="{% url 'hotel_delete' hotel.pk %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="5">No hotels available.</td>
+        </tr>
+    {% endif %}
+</tbody>

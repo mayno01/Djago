@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Create event</title>
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 70%;
+        padding: 50px;
+        background-color: whitesmoke;
+        border-radius: 10px;
+    }
+    #form-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Stack each form-group vertically */
+    }
+    .form-group {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .form-group label,
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        display: block !important; /* Force block display */
+        width: 100% !important; /* Force full width */
+        margin-top: 5px; /* Adds a small space between label and input */
+    }
+</style>
+
+<div class="container">
+    <h1>Events</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="form-container">
+            <div class="form-group">
+                {{ form.title.label_tag }}
+                {{ form.title }}
+            </div>
+            <div class="form-group">
+                {{ form.date.label_tag }}
+                {{ form.date }}
+            </div>
+            <div class="form-group">
+                {{ form.description.label_tag }}
+                {{ form.description }}
+            </div>
+            <div class="form-group">
+                {{ form.fee.label_tag }}
+                {{ form.fee }}
+            </div>
+            <div class="form-group">
+                {{ form.image.label_tag }}
+                {{ form.image }}
+            </div>
+            <input type="submit" value="Add" class="btn btn-primary">
+        </div>
+    </form>
+</div>
+
+{% endblock %}

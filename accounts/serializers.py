@@ -38,15 +38,17 @@ class ResetPasswordEmailSerializer(serializers.Serializer):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = token_generator.make_token(user)
 
-        reset_link = f"http://example.com/reset_password/{uid}/{token}/"
+        # Angular frontend reset password link
+        reset_link = f"http://localhost:4200/reset-password/{uid}/{token}/"
 
         send_mail(
             'Password Reset Request',
             f'Use the link below to reset your password: {reset_link}',
-            'admin@example.com',
+            'amine.hamed@esprit.tn',
             [user.email],
         )
         return attrs
+
     
 
 class ResetPasswordConfirmSerializer(serializers.Serializer):

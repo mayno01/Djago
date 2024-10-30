@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %}
+<title>{{ event.title }} - Event Details</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ event.title }}</h1>
+    <p><strong>Date:</strong> {{ event.date|date:"F d, Y" }}</p>
+
+    <p><strong>Description:</strong></p>
+    <a href="{% url 'show' event.id %}?translate=true">
+        <img src="{% static 'icons/translate.png' %}" width="20" height="20" alt="Translate">
+    </a>
+    
+        {% if translated_description %}
+            {{ translated_description }}
+        {% else %}
+            {{ event.description }}
+        {% endif %}
+    </p>
+
+    <p><strong>Fee:</strong> ${{ event.fee }}</p>
+    
+    {% if event.image %}
+        <img src="{{ event.image.url }}" alt="{{ event.title }}" style="max-width: 100%; height: auto;">
+    {% endif %}
+
+    <a href="{% url 'index_client' %}" class="btn btn-secondary">Back to Events</a>
+</div>
+{% endblock %}

@@ -21,4 +21,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.urls')), 
     path('api/', include('chatbot.urls')),
+    path('', include('hotel.urls')),
+    path('checkin/', include('checkin.urls')), 
+    path('', include('crudapp.urls')),
+    path('', include('face_auth.urls')),
+    path('api/', include('destinations.urls')),
+    path('api/circuits/', include('circuit.urls')),
 ]
