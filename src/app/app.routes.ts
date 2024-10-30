@@ -10,6 +10,7 @@ import { HotelDetailComponent } from './components/hotel-detail/hotel-detail.com
 import { AddHotelComponent } from './components/add-hotel/add-hotel.component';
 import { EditHotelComponent } from './components/edit-hotel/edit-hotel.component';
 import { CheckinComponent } from './components/checkin/checkin.component'; 
+import { FaceLoginComponent } from './face-login/face-login.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,6 +20,7 @@ export const routes: Routes = [
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: 'reset-password/:uidb64/:token', component: ResetPasswordComponent },
   { path: 'hotels', component: HotelListComponent },
+  {path: 'face-login', component: FaceLoginComponent},
   { path: 'hotels/:id', component: HotelDetailComponent}, // Route for hotel detail
   { path: 'add-hotel', component: AddHotelComponent}, // Add this line
   { path: 'edit-hotel/:id', component: EditHotelComponent },

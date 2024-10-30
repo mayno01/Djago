@@ -1,0 +1,12 @@
+<div class="face-login-container">
+    <h1>Face Login</h1>
+    <button class="permission-button" (click)="checkPermission()">Check Permission</button>
+    <div *ngIf="camData" class="webcam-container">
+        <webcam [trigger]="$trigger" (imageCapture)="capture($event)"></webcam>
+        <button class="capture-button" (click)="captureImage()">Capture Image</button>
+    </div>
+    <div *ngIf="capturedImage" class="image-preview">
+        <h2>Captured Image</h2>
+        <img [src]="capturedImage" class="captured-image" />
+    </div>
+</div>
