@@ -1,20 +1,18 @@
 import { Component } from '@angular/core';
-import {NgForOf} from "@angular/common";
-import {Router, RouterLink} from "@angular/router";
-import {DestinationService} from '../destination.service';
-import {Destination} from '../destination';
-import {FormsModule} from '@angular/forms';
+import { Router, RouterLink } from "@angular/router";
+import { DestinationService } from '../destination.service';
+import { Destination } from '../destination';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add-destination',
   standalone: true,
   imports: [
-    NgForOf,
     RouterLink,
     FormsModule
   ],
   templateUrl: './add-destination.component.html',
-  styleUrl: './add-destination.component.css'
+  styleUrls: ['./add-destination.component.css']
 })
 export class AddDestinationComponent {
   destination: Destination = new Destination();
@@ -42,6 +40,18 @@ export class AddDestinationComponent {
       },
       (error) => {
         console.error('Error adding destination:', error);
+      }
+    );
+  }
+
+  // New method to generate the description using AI
+  generateDescription(): void {
+    this.destinationService.generateDescription(this.destination.name).subscribe(
+      (data) => {
+        this.destination.description = data.description; // Populate the description field
+      },
+      (error) => {
+        console.error('Error generating description:', error);
       }
     );
   }

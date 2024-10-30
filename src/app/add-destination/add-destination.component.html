@@ -145,6 +145,9 @@
   <div>
     <label for="description">Description:</label>
     <textarea id="description" [(ngModel)]="destination.description" name="description" required></textarea>
+    <button type="button" class="mx-2 btn btn-warning" (click)="generateDescription()">
+      AI Generate Description
+    </button>
   </div>
   <div>
     <label for="location">Location:</label>
@@ -162,7 +165,9 @@
     <label for="image">Image:</label>
     <input type="file" id="image" (change)="onImageSelected($event)" required>
   </div>
-  <button type="submit" class="submit-button">Add Destination</button></form>
+  <button type="submit" class="submit-button">Add Destination</button>
+</form>
+
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
   <div class="row pt-5">
