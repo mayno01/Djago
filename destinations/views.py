@@ -1,3 +1,4 @@
+# views.py
 from django.shortcuts import render
 from rest_framework import viewsets
 from .models import Destination
@@ -5,10 +6,13 @@ from .serializers import DestinationSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 import genai
 import google.generativeai as genai
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+import os
 
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
-
 
 class DestinationViewSet(viewsets.ModelViewSet):
     queryset = Destination.objects.all()
@@ -19,16 +23,13 @@ class DestinationViewSet(viewsets.ModelViewSet):
         serializer.save()  # Save the instance
 
 
-    def ai_generate_description(title):
+def ai_generate_description(title):
     model = genai.GenerativeModel('gemini-1.5-flash')
-    prompt = f"Generate a detailed description for an event with the title in 4 lines: {title}"
-    
+    prompt = f"Generate a detailed description for a destination with the title in 4 lines: {title}"
     response = model.generate_content(prompt)
     return response.text
 
-
-
-
+    
 @csrf_exempt  # Use only for testing; set up CSRF tokens in production
 def generate_description(request):
     if request.method == 'POST':
