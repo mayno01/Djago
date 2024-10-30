@@ -1,0 +1,63 @@
+<div class="circuit-list">
+    <h2>Circuit List</h2>
+    <button class="add-circuit-btn" (click)="addCircuit()">Add Circuit</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Rating</th>
+          <th>Difficulty</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let circuit of circuits">
+          <td>{{ circuit.name }}</td>
+          <td>{{ circuit.description }}</td>
+          <td>{{ circuit.location }}</td>
+          <td>{{ circuit.rating }}</td>
+          <td>{{ circuit.difficulty_level }}</td>
+          <td class="actions">
+            <button class="action-btn" (click)="viewCircuit(circuit.id!)">View</button>
+            <button class="action-btn" (click)="editCircuit(circuit.id!)">Edit</button>
+            <button class="action-btn delete-btn" (click)="deleteCircuit(circuit.id!)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="selectedCircuit" class="review-section">
+    <h3>Reviews for {{ selectedCircuit.name }}</h3>
+  
+    <!-- Review Form -->
+    <div class="review-form">
+      <h4>Add a Review</h4>
+      <label for="rating">Rating:</label>
+      <select [(ngModel)]="newReview.rating" id="rating" required>
+        <option *ngFor="let rate of [1, 2, 3, 4, 5]" [value]="rate">{{ rate }}</option>
+      </select>
+  
+      <label for="comment">Comment:</label>
+      <textarea [(ngModel)]="newReview.comment" id="comment" placeholder="Write your review here..." required></textarea>
+  
+      <button (click)="submitReview(selectedCircuit.id!)" class="submit-review-btn">Submit Review</button>
+    </div>
+  
+    <!-- Display Reviews -->
+    <div class="review-list" *ngIf="reviews.length > 0">
+      <h4>All Reviews</h4>
+      <ul>
+        <li *ngFor="let review of reviews">
+          <strong>Rating:</strong> {{ review.rating }} / 5
+          <p>{{ review.comment }}</p>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="reviews.length === 0">
+      <p>No reviews yet. Be the first to review this circuit!</p>
+    </div>
+  </div>
+  

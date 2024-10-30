@@ -1,0 +1,20 @@
+<div *ngIf="circuit">
+    <h2>{{ circuit?.name }}</h2>
+    <p><strong>Description:</strong> {{ circuit?.description }}</p>
+    <p><strong>Location:</strong> {{ circuit?.location }}</p>
+    <p><strong>Rating:</strong> {{ circuit?.rating }}</p>
+    <p><strong>Difficulty Level:</strong> {{ circuit?.difficulty_level }}</p>
+  
+    <h3>Reviews</h3>
+    <div *ngIf="reviews.length > 0; else noReviews">
+      <div *ngFor="let review of reviews" class="review">
+        <p><strong>User:</strong> {{ review.user }}</p>
+        <p><strong>Rating:</strong> {{ review.rating }}</p>
+        <p *ngIf="review.comment"><strong>Comment:</strong> {{ review.comment }}</p>
+      </div>
+    </div>
+    <ng-template #noReviews>
+      <p>No reviews available for this circuit.</p>
+    </ng-template>
+  </div>
+      

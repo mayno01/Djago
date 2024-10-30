@@ -1,0 +1,25 @@
+.recommendation-form {
+    max-width: 500px;
+    margin: 0 auto; /* Center the form */
+    padding: 20px;
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background */
+  }
+  
+  .form-group {
+    margin-bottom: 15px; /* Space between fields */
+  }
+  
+  input {
+    width: 100%; /* Full width */
+    padding: 10px; /* Space inside input */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  input::placeholder {
+    color: #aaa; /* Lighter color for placeholder */
+    font-style: italic; /* Italic style */
+  }
+  

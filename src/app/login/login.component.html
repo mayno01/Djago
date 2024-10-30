@@ -1,0 +1,22 @@
+
+
+<div class="login-container">
+    <div class="login-left">
+      <h2>Login! 👋</h2>
+      <p>How do I get started?</p>
+
+
+      <p>Login with username</p>
+      <form (ngSubmit)="onLogin()">
+        <label for="username">username</label>
+        <input type="username" [(ngModel)]="username" id="username" name="username" placeholder="username">
+        <label for="password">Password</label>
+        <input type="password" [(ngModel)]="password" id="password" name="password" placeholder="******">
+        <button type="submit" class="btn btn-signin">Sign In</button>
+      </form>
+    <p>Don't have an account? <a href="/register">Sign Up Now</a></p>
+
+    <p> <a href="/forget-password">  forget password ?  </a> </p> 
+    </div>
+
+  </div>

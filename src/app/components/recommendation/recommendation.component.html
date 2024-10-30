@@ -1,0 +1,50 @@
+<form (ngSubmit)="submit()" #recommendationForm="ngForm" class="recommendation-form">
+  <h2>Get Recommendations</h2>
+  
+  <div class="form-group">
+    <label for="budget">Budget:</label>
+    <input type="number" [(ngModel)]="budget" name="budget" id="budget" placeholder="Enter your budget" required />
+  </div>
+  
+  <div class="form-group">
+    <label for="numPeople">Number of People:</label>
+    <input type="number" [(ngModel)]="numPeople" name="numPeople" id="numPeople" placeholder="Enter number of people" required />
+  </div>
+  
+  <div class="form-group">
+    <label for="daysOfTravel">Days of Travel:</label>
+    <input type="number" [(ngModel)]="daysOfTravel" name="daysOfTravel" id="daysOfTravel" placeholder="Enter days of travel" required />
+  </div>
+  
+  <div class="form-group">
+    <label for="preferredDifficulty">Preferred Difficulty:</label>
+    <input type="number" [(ngModel)]="preferredDifficulty" name="preferredDifficulty" id="preferredDifficulty" placeholder="Enter preferred difficulty" required />
+  </div>
+  
+  <div class="form-group">
+    <label for="preferredRating">Preferred Rating:</label>
+    <input type="number" [(ngModel)]="preferredRating" name="preferredRating" id="preferredRating" placeholder="Enter preferred rating (1-5)" required />
+  </div>
+  
+  <button type="submit" [disabled]="!recommendationForm.valid" class="submit-button">Get Recommendations</button>
+</form>
+
+<div *ngIf="recommendations && recommendations.length > 0">
+  <h2>Recommendations:</h2>
+  <div *ngFor="let recommendation of recommendations" class="recommendation-card">
+    <h3>{{ recommendation.name }}</h3>
+    <p><strong>Location:</strong> {{ recommendation.location }}</p>
+    <p><strong>Rating:</strong> {{ recommendation.rating }}</p>
+    <p><strong>Difficulty Level:</strong> {{ recommendation.difficulty_level }}</p>
+    <p><strong>Description:</strong> {{ recommendation.description }}</p>
+    <hr />
+  </div>
+</div>
+
+<div *ngIf="recommendations && recommendations.length === 0">
+  <h2>No recommendations found. Please try different criteria.</h2>
+</div>
+
+<div *ngIf="error">
+  <h2>Error fetching recommendations: {{ error }}</h2>
+</div>

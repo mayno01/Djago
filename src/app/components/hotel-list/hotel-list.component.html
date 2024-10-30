@@ -1,0 +1,19 @@
+<!-- Add Hotel Button -->
+<button (click)="addHotel()" class="btn btn-primary mb-3">Add Hotel</button>
+
+<!-- List Hotels -->
+<div *ngFor="let hotel of hotels">
+  <h4>{{ hotel.name }}</h4>
+  <p>{{ hotel.location }}</p>
+  <p>Rating: {{ hotel.rating }}</p>
+  <p>Price: {{ hotel.price }}</p>
+  <p>{{ hotel.description }}</p>
+  <button (click)="viewHotel(hotel.id!)" class="btn btn-info">View</button>
+  <button (click)="editHotel(hotel.id!)" class="btn btn-warning">Edit</button>
+  <button (click)="deleteHotel(hotel.id!)" class="btn btn-danger">Delete</button>
+</div>
+
+<!-- No Hotels Template -->
+<ng-template #noHotels>
+  <p>No hotels available.</p>
+</ng-template>

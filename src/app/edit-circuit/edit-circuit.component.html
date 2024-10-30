@@ -1,0 +1,65 @@
+<div class="edit-circuit-container">
+    <h2>Edit Circuit</h2>
+    <form (ngSubmit)="updateCircuit()" #circuitForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="circuit.name"
+          required
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea
+          id="description"
+          name="description"
+          [(ngModel)]="circuit.description"
+          required
+        ></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          [(ngModel)]="circuit.location"
+          required
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <input
+          type="number"
+          id="rating"
+          name="rating"
+          [(ngModel)]="circuit.rating"
+          min="0"
+          max="5"
+          required
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="difficulty_level">Difficulty Level:</label>
+        <input
+          type="number"
+          id="difficulty_level"
+          name="difficulty_level"
+          [(ngModel)]="circuit.difficulty_level"
+          min="1"
+          max="10"
+          required
+        />
+      </div>
+      
+      <button class="submit-btn" type="submit" [disabled]="circuitForm.invalid">Update Circuit</button>
+    </form>
+  </div>
+  
